@@ -1,172 +1,173 @@
-$colors: (
-    primary: #1a774b,
-    primary-light: lighten(#1a774b, 40%),
-    primary-dark: darken(#1a774b, 40%),
-    accent: #fff
-);
-
-$padding: 15px; 
-$borders: 15px;
-
-@function color($color-name) {
-    @return map-get($colors, $color-name)
-}
-
-$desktop: 840px;
-
-@mixin desktop {
-    @media (min-width: #{$desktop}) {
-        @content;
-    }
-}
-
 body, html {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    font-family: 'Montserrat';
-    margin: 0;
-    
-    #bg {
-        background-color: color(primary);
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        z-index: -1;
+  font-family: 'Montserrat';
+  margin: 0;
+}
 
-        @include desktop {
+body #bg {
+  background-color: #1a774b;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
+@media (min-width: 840px) {
+  body #bg {
+    -webkit-clip-path: polygon(0 0, 75% 0, 55% 100%, 0% 100%);
             clip-path: polygon(0 0, 75% 0, 55% 100%, 0% 100%);
-        }
-    }
-
-    #title{
-        color: color(accent);
-        text-decoration: none;
-        padding: $padding;
-        display: block;
-        font-size: 1em;
-        margin-top: 0px;
-    }
-    header a {
-        color: color(accent);
-        text-decoration: none;
-        padding: $padding;
-        display: block;
-        font-size: 1em;
-        border: 1px solid #000;
-    }
+  }
 }
 
-main {
+body #title {
+  color: #fff;
+  text-decoration: none;
+  padding: 15px;
+  display: block;
+  font-size: 1em;
+  margin-top: 0px;
+}
 
-    @include desktop {
-        display: grid;
+body header a {
+  color: #fff;
+  text-decoration: none;
+  padding: 15px;
+  display: block;
+  font-size: 1em;
+  border: 1px solid #000;
+}
+
+@media (min-width: 840px) {
+  main {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 50% auto;
         grid-template-columns: 50% auto;
-        grid-template-areas: 
-        "primary card";
-        }
-    section#card {
-        background: color(accent);
-        padding: 20px;
-        margin: 1em auto;
-        border-radius: $borders;
-        box-shadow: 0 10px 30px rgba(0,0,0,.2);
-        width: 80%;
-
-        @include desktop {
-            grid-area: card;
-            height: fit-content;
-            align-self: center;
-            margin: 1em;
-        }
-    .accordion {
-        background-color: color(primary);
-        color: color(accent);
-        cursor: pointer;
-        padding: 18px;
-        width: 100%;
-        border: none;
-        text-align: left;
-        outline: none;
-        font-size: 15px;
-        transition: 0.4s;
-        }
-    .active, .accordion:hover {
-        background-color: lighter (color(primary), 50%);
-        }
-    .panel{
-        max-width: 480px;
-        padding: 0 18px;
-        background-color: color(accent);
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.2s ease-out;
-        }
-    }
-
-    section#primary {
-        color: color(accent);
-        padding: $padding;
-        text-align: center;
-        
-
-        @include desktop {
-            grid-area: primary;
-            text-align: left;
-            margin: 4em 0 0 4em;
-        }
-
-        h1 {
-            font-size: 3em;
-            margin-top: 10px;
-            text-transform: uppercase;
-
-            @include desktop {
-                width: 30%;
-                font-size: 4em;
-                line-height: .9em;
-            }
-        }
-
-        p {
-            font-size: 1.4em;
-        }
-
-        a {
-            color: color(primary);
-            border-radius: $borders;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: bold;
-            background-color: color(accent);
-            display: block;
-            text-align: center;
-            margin: 50px auto 0 auto;
-            padding: $padding;
-            border: 1px solid #ccc;
-
-            @include desktop {
-                display: inline-block;
-                padding: $padding $padding * 4;
-            }
-        }
-    }
+        grid-template-areas: "primary card";
+  }
 }
-footer {
-    .last-modified{
-    color: color(accent);
-    padding: $padding;
+
+main section#card {
+  background: #fff;
+  padding: 20px;
+  margin: 1em auto;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 80%;
+}
+
+@media (min-width: 840px) {
+  main section#card {
+    grid-area: card;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    margin: 1em;
+  }
+}
+
+main section#card .accordion {
+  background-color: #1a774b;
+  color: #fff;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+main section#card .active, main section#card .accordion:hover {
+  background-color: lighter #1a774b, 50%;
+}
+
+main section#card .panel {
+  max-width: 480px;
+  padding: 0 18px;
+  background-color: #fff;
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height 0.2s ease-out;
+  transition: max-height 0.2s ease-out;
+}
+
+main section#primary {
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+}
+
+@media (min-width: 840px) {
+  main section#primary {
+    grid-area: primary;
+    text-align: left;
+    margin: 4em 0 0 4em;
+  }
+}
+
+main section#primary h1 {
+  font-size: 3em;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+@media (min-width: 840px) {
+  main section#primary h1 {
+    width: 30%;
+    font-size: 4em;
+    line-height: .9em;
+  }
+}
+
+main section#primary p {
+  font-size: 1.4em;
+}
+
+main section#primary a {
+  color: #1a774b;
+  border-radius: 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: #fff;
+  display: block;
+  text-align: center;
+  margin: 50px auto 0 auto;
+  padding: 15px;
+  border: 1px solid #ccc;
+}
+
+@media (min-width: 840px) {
+  main section#primary a {
+    display: inline-block;
+    padding: 15px 60px;
+  }
+}
+
+footer .last-modified {
+  color: #fff;
+  padding: 15px;
+  position: fixed;
+  bottom: 0;
+}
+
+@media (min-width: 840px) {
+  footer .last-modified {
+    color: #000;
+    right: 30px;
+    padding-right: 40px;
     position: fixed;
     bottom: 0;
-
-        @include desktop {
-            color: #000;
-            right: 30px;
-            padding-right: 40px;
-            position: fixed;
-            bottom: 0;
-        }
-    }
+  }
 }
-
+/*# sourceMappingURL=main.css.map */
