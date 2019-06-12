@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Asher Beck - eLeadWorks</title>
+    <meta name="description" content="Frontend Developer, Asher Beck's hand coded webpage">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div id="bg"></div>
+    <header>
+        <p id="title"></p>
+        <script>document.getElementById("title").innerHTML = document.title;</script>
+    </header>
+    <main>
+        <section id="primary">
+            <h1>Frontend Developer</h1>
+            <p>Coding the Web since 1999.</p>
+            <a href="https://github.com/eLeadWorks/Frontend-Design.git">View source code</a>
+        </section>
+        <section id="card">
+            <button class="accordion">View the HTML of this webpage</button>
+            <div class="panel">
+            <p><script src="https://gist.github.com/eLeadWorks/1871e405b09aa283ebe8748ebc10a70f.js"></script></p>
+            </div>
+            <button class="accordion">View the SASS of this webpage</button>
+            <div class="panel">
+            <p><script src="https://gist.github.com/eLeadWorks/8980a51f63dda297fd8912d02217dc88.js"></script></p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p class="last-modified">Document last modified on <span id="last_modified"></span>.</p>
+        <script>
+        document.getElementById("last_modified").innerHTML = document.lastModified;
+        </script>
+    </footer>
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+            
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight){
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            } 
+            });
+            }
+    </script>
+</body>
+</html>
