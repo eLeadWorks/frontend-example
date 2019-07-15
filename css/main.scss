@@ -2,7 +2,8 @@ $colors: (
     primary: #1a774b,
     primary-light: lighten(#1a774b, 40%),
     primary-dark: darken(#1a774b, 40%),
-    accent: #fff
+    accent: #fff,
+    offset: #000
 );
 
 $padding: 15px; 
@@ -12,7 +13,7 @@ $borders: 15px;
     @return map-get($colors, $color-name)
 }
 
-$desktop: 840px;
+$desktop: 786px;
 
 @mixin desktop {
     @media (min-width: #{$desktop}) {
@@ -42,11 +43,17 @@ body {
 
     #title{
         color: color(accent);
-        text-decoration: none;
         padding: $padding;
-        display: block;
-        font-size: 1em;
-        margin-top: 0px;
+        font-size: 1.2em;
+        text-align: center;
+        
+
+        @include desktop {
+            color: color(accent);
+            padding: 20px 0px 0px 80px;
+            font-size: 1.2em;
+            text-align: left;
+        }
     }
     header a {
         color: color(accent);
@@ -54,7 +61,7 @@ body {
         padding: $padding;
         display: block;
         font-size: 1em;
-        border: 1px solid #000;
+        border: 1px solid color(offset);
     }
 }
 
@@ -68,7 +75,7 @@ main {
         }
     section#card {
         background: color(accent);
-        padding: 20px;
+        padding: $padding;
         margin: 1em auto;
         border-radius: $borders;
         box-shadow: 0 10px 30px rgba(0,0,0,.2);
@@ -130,7 +137,7 @@ main {
         }
 
         p {
-            font-size: 1.4em;
+            font-size: 1.1em;
         }
 
         a {
@@ -161,9 +168,8 @@ footer {
     bottom: 0;
 
         @include desktop {
-            color: #000;
-            right: 30px;
-            padding-right: 40px;
+            color: color(offset);
+            right: 80px;
             position: fixed;
             bottom: 0;
         }
